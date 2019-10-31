@@ -1,4 +1,5 @@
 <?php
+
 require_once('function.php');
 require_once('Models/Todo.php');
 
@@ -9,3 +10,6 @@ $todo = new Todo();
 $todo->delete($id);
 
 
+header('Location: index.php');
+
+?>
