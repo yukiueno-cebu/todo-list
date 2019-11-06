@@ -1,8 +1,8 @@
 <?php
-    // require_once 'function.php';
-     require_once('function.php');
-    // require_once 'Models/Todo.php';
-    require_once('Models/Todo.php');
+    // require_once('function.php');
+    require_once 'function.php';
+    // require_once('Models/Todo.php');
+    require_once 'Models/Todo.php';
     //Todoクラスのインスタンス化
     $todo = new Todo();
     //DBからデータを全件取得
@@ -24,24 +24,24 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <header class="px-5 bg-primary">
-        <nav class="navbar navbar-dark">
-            <a href="index.php" class="navbar-brand">TODO APP</a>
-            <div class="justify-content-end">
-                <span class="text-light">
-                    SeedKun
-                </span>
-            </div>
-        </nav>
+  <header class="px-5 bg-primary">
+      <nav class="navbar navbar-dark">
+          <a href="index.php" class="navbar-brand">TODO APP</a>
+          <div class="justify-content-end">
+              <span class="text-light">
+                  SeedKun
+              </span>
+          </div>
+      </nav>
     </header>
     <main class="container py-5">
         <section>
             <form class="form-row justify-content-center" action="create.php" method="POST">
                 <div class="col-10 col-md-6 py-2">
-                      <input type="text" class="form-control" placeholder="ADD TODO" name="task">
+                      <input id="input-task" type="text" class="form-control" placeholder="ADD TODO" name="task">
                 </div>
                 <div class="py-2 col-md-3 col-10">
-                    <button type="submit" class="col-12 btn btn-primary">ADD</button>
+                    <button id="add-button" type="submit" class="col-12 btn btn-primary">ADD</button>
                 </div>
             </form>
         </section>
@@ -68,10 +68,10 @@
                 </td>
                 <td>NOT YET</td>
                 <td>
-                    <a class="text-success" href="edit.php?id=<?php echo h($task['id']);?>">EDIT</a>
+                    <a class="text-success" href="edit.php?id=<?php echo h($task['id']); ?>">EDIT</a>
                 </td>
                 <td>
-                <a class="text-danger" href="delete.php?id=<?php echo h($task['id']);?>">DELETE</a>
+                    <a data-id="<?php echo h($task['id']); ?>" class="text-danger delete-button" href="delete.php?id=<?php echo h($task['id']); ?>">DELETE</a>
                 </td>
               </tr>
               <?php endforeach; ?>
@@ -79,5 +79,8 @@
           </table>
         </section>
     </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./assets/js/app.js"></script>
 </body>
 </html>

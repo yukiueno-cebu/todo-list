@@ -1,10 +1,14 @@
 <?php
-require_once 'function.php';
-require_once 'Models/Todo.php';
-$id=$_GET['id'];
-$todo= new Todo();
-$task=$todo->get($id);
-//var_dump($task)
+    require_once 'function.php';
+    // require_once('function.php');
+    require_once 'Models/Todo.php';
+    // require_once('Models/Todo.php');
+    //選択されたtaskのidを取得
+    $id = $_GET['id'];
+    // var_dump($id);
+    // Todoのクラスをインスタンス化してgetメソッドを使ってとりあえず取得したいデータが取れているかだけ確認
+    $todo = new Todo();
+    $task = $todo->get($id);
 ?>
 
 <!DOCTYPE html>
@@ -33,8 +37,8 @@ $task=$todo->get($id);
         <section>
             <form class="form-row" action="update.php" method="POST">
                 <div class="col-12 col-md-9 py-2">
-                    <input type="text" name="task" class="form-control" placeholder="ADD TODO" value="<?php echo h($task['name']);?>">
-                    <input type="hidden" value="<?php echo h($task['id']);?>"name="id">
+                    <input type="text" name="task" class="form-control" placeholder="ADD TODO" value="<?php echo h($task['name']); ?>">
+                    <input type="hidden" value="<?php echo h($task['id']); ?>" name="id">
                 </div>
                 <div class="py-2 col-md-3 col-12">
                     <button type="submit" class="col-12 btn btn-primary btn-block">UPDATE</button>
@@ -42,6 +46,5 @@ $task=$todo->get($id);
             </form>
         </section>
     </main>
-
 </body>
 </html>

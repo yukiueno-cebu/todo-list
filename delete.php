@@ -1,15 +1,9 @@
+  
 <?php
+    require_once 'Models/Todo.php';
+    $id = $_GET['id'];
+    $todo = new Todo();
+    $todo->delete($id);
 
-require_once('function.php');
-require_once('Models/Todo.php');
-
-$id = $_GET['id'];
-
-$todo = new Todo();
-
-$todo->delete($id);
-
-
-header('Location: index.php');
-
-?>
+    echo json_encode($id);
+    // header('Location: index.php');
